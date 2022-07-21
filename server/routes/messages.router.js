@@ -25,8 +25,6 @@ router.post('/', (req, res) => {
         greeting = "Good evening, ";
     }
 
-    console.log('greeting is', greeting);
-
 
     class Message {
         constructor(template, greeting, firstName, hotelName, roomNumber){

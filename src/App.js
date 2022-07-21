@@ -9,6 +9,7 @@ function App() {
  const [companyId, setCompanyId] = useState('');
  const [templateList, setTemplateList] = useState([]);
  const [templateId, setTemplateId] = useState('');
+ const [generatedMessage, setGeneratedMessage] = useState('');
 
  const getGuests = () => {
   console.log('in getGuests');
@@ -58,14 +59,21 @@ function App() {
   }
 
   console.log('result is', result);
+  
+  
    axios.post('/messages', result)
    .then((res) => {
     console.log(res.data);
+    setGeneratedMessage(res.data);
    }).catch((error) => {
     console.log(error);
    });
+
+   
   }
 
+
+  console.log('message is', generatedMessage);
   
 
   return (
@@ -115,6 +123,9 @@ function App() {
       <button type='submit'>Submit</button>
 
       </form>
+
+      <h2>Generated Message</h2>
+      <p>{generatedMessage}</p>
     </div>
   );
 }
