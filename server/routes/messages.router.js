@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     console.log('hotel is', hotel);
     console.log('template is', template);
     
-
+    //Generate the greeting depending on the local time at the hotel's location 
     let currentTime = new Date().toLocaleString("en-US", {hour:'numeric', hour12: false, timeZone: hotel.timezone});
 
     let greeting;
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
         greeting = "Good evening, ";
     }
 
-
+    //Create a class to generate a message
     class Message {
         constructor(template, greeting, firstName, hotelName, roomNumber){
             this.template = template;
@@ -72,12 +72,8 @@ router.post('/', (req, res) => {
 
     let message = new Message(template.message, greeting, guest.firstName, hotel.company, guest.reservation.roomNumber);
 
-    let generatedMessage = message.generateMessage();
-    console.log(generatedMessage);
-    
+    let generatedMessage = message.generateMessage();  
     res.send(generatedMessage);
-    
-    
 })
 
 

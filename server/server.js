@@ -17,6 +17,7 @@ app.use('/guests', guests);
 app.use('/companies', companies);
 app.use('/templates', templates);
 app.use('/messages', messages);
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT,  () => {
     console.log('Listening on port: ', PORT);

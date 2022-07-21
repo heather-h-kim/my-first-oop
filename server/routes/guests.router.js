@@ -4,7 +4,6 @@ const guests = require('../modules/guests.data.js')
 
 
 router.get('/', (req, res) => {
-    console.log(guests);
     res.send(guests);
 });
 
