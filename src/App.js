@@ -48,8 +48,7 @@ function App() {
   getTemplates();
  }, [])
 
-
-
+ 
  const handleSubmit = (event) => {
   event.preventDefault();
   const result = {
@@ -59,77 +58,15 @@ function App() {
   }
 
   console.log('result is', result);
+   axios.post('/messages', result)
+   .then((res) => {
+    console.log(res.data);
+   }).catch((error) => {
+    console.log(error);
+   });
   }
 
-  console.log('guest is', result.guest);
   
-
-
-  
-  
-
-  // let currentTime = new Date().toLocaleString("en-US", {hour:'numeric', hour12: false, timeZone: "US/Central"});
-
-  // let greeting;
-  // if(currentTime >= 0 && currentTime < 12){
-  //     greeting = "Good morning, ";
-  // } else if(currentTime >= 12 && currentTime < 18){
-  //     greeting = "Good afternoon, ";
-  // } else if(currentTime >= 18 && currentTime < 24){
-  //     greeting = "Good evening, ";
-  // }
-
-  // console.log('greeting is', greeting);
-
-
-  // class Message {
-  //   constructor(template, greeting, firstName, hotelName, roomNumber){
-  //       this.template = template;
-  //       this.greeting = greeting;
-  //       this.firstName = firstName;
-  //       this.hotelName = hotelName;
-  //       this.roomNumber = roomNumber;
-  //   }
-
-  //   getTemplate = () => {
-  //       return this.template;
-  //   }
-
-  //   getGreeting = () => {
-  //       return this.greeting;
-  //   }
-
-  //   getFirstName = () => {
-  //       return this.firstName;
-  //   }
-
-  //   getHotelName = () => {
-  //       return this.hotelName;
-  //   }
-
-  //   getRoomNumber = () => {
-  //     return this.roomNumber;
-  //   }
-
-  //   generateGreeting = () => {
-  //       return this.greeting + this.firstName + "." ;
-  //   }
-
-  //   generateBody = () => {
-  //       let body = this.template.replace("{hotelName}", this.hotelName);
-  //       body = body.replace("{roomNumber}", this.roomNumber);
-  //       return body;
-  //   }
-
-  //   generateMessage = () => {
-  //       return this.generateGreeting() + " " + this.generateBody();
-  //   }
-  // }
-
-  // let message1 = new Message(template.message, greeting, guest.firstName, hotel.company, guest.reservation.roomNumber);
-  // console.log(message1.generateMessage());
-  
-
 
   return (
     <div className="App">
